@@ -1,0 +1,19 @@
+.die-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.die {
+	height: 3em;
+	width: 3em;
+	border: 0.25em solid black;
+	border-radius: 20%;
+	margin: 0.5em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3em;
+	padding: 0;
+}
