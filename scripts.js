@@ -1,9 +1,7 @@
 class Die {
 	static diceArray = [];
 	
-	constructor(val) {
-		this.val = val;
-		// console.log(val);
+	constructor() {
 		Die.diceArray.push(this);
 		this.render();
 		this.roll();
@@ -22,16 +20,25 @@ class Die {
 		this.div.click(() => this.roll());
 	}
 	remove() {
-		// this.div.off('click');
-		this.div.dblclick(() => this.div.remove());
+		this.div.dblclick(() => {
+			this.div.remove()
+			let index = Die.diceArray.indexOf(this);
+			Die.diceArray.splice(index, 1);
+		});
 	}
 }
 
 $('.new-die').click(() => {
 	new Die();
-	console.log(Die.diceArray);
 });
 
 $('.roll-die').click(() => {
 	Die.diceArray.forEach(die => die.roll());
+});
+
+$('.sum-die').click(() => {
+	let sum = Die.diceArray.reduce((total, num) => {
+		return total += num.val;
+	}, 0);
+	Swal.fire(`The sum is: ${sum}`);
 });
