@@ -75,9 +75,7 @@ class Die {
 	}
 }
 
-$('.new-die').click(() => {
-	new Die();
-});
+$('.new-die').click(() => new Die());
 
 $('.roll-die').click(() => {
 	Die.diceArray.forEach(die => {
@@ -87,12 +85,8 @@ $('.roll-die').click(() => {
 });
 
 $('.sum-die').click(() => {
-	let sum = Die.diceArray.reduce((total, die) => {
-		return total += die.val;
-	}, 0);
+	let sum = Die.diceArray.reduce((total, die) => (total += die.val), 0);
 	Swal.fire(`The sum is: ${sum}`);
 });
 
-$(`.change-die`).click(() => {
-	Die.diceArray.forEach(die => die.changeStyle());
-});
+$(`.change-die`).click(() => Die.diceArray.forEach(die => die.changeStyle()));
